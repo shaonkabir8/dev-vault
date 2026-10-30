@@ -1,517 +1,529 @@
-# 🔐 Dev Vault
+# 🔐 Dev Vault — Complete Documentation
 
-**Reusable Engineering Resource Repository**
+<div align="center">
 
-> Write once. Reuse wisely. Keep it simple.
+**🌐 Language / ভাষা:** [English](./README.md) | [বাংলা](./README.bn.md)
 
-Dev Vault is a centralized collection of reusable engineering resources, practical solutions, development patterns, scripts, configurations, documentation, and technical references.
+*Full engineering documentation, standards, and working principles.*
 
-Its purpose is simple: reduce repetitive work, preserve useful knowledge, and make reliable solutions easier to discover, understand, and reuse.
-
----
-
-## 🚀 Quick Start
-
-Explore the repository, find a relevant resource, understand its requirements, and adapt it responsibly.
-
-**Resource usage principles:**
-
-- Understand before reuse.
-- Verify before integration.
-- Adapt to the actual project context.
-- Preserve maintainability and security.
-- Improve resources through reviewed contributions.
+</div>
 
 ---
 
-## 📚 Contents
+## 📖 Table of Contents
 
 - [Introduction](#-introduction)
-- [Resource Categories](#-resource-categories)
-- [Repository Architecture](#️-repository-architecture)
+- [Repository Architecture](#-repository-architecture)
 - [Resource Lifecycle](#-resource-lifecycle)
-- [Engineering Standards](#️-engineering-standards)
+- [Working Standards](#-working-standards)
+- [Standard Workflow](#-standard-workflow)
 - [Commit Convention](#-commit-convention)
-- [Branch and Pull Request](#-branch-and-pull-request)
+- [Branch & Pull Request Policy](#-branch--pull-request-policy)
 - [Security Standards](#-security-standards)
-- [Reuse and Maintenance](#-reuse-and-maintenance)
-- [Documentation Template](#-resource-documentation-template)
-- [Quality Standards](#-quality-standards)
+- [Reuse & Maintenance Policy](#-reuse--maintenance-policy)
+- [Resource Documentation Template](#-resource-documentation-template)
+- [Quality Principles](#-quality-principles)
 - [Automation Policy](#-automation-policy)
-- [Contribution and Governance](#-contribution-and-governance)
-- [Privacy and Ownership](#-privacy-and-ownership)
-- [Future Direction](#-future-direction)
-- [Engineering Philosophy](#-engineering-philosophy)
+- [Privacy & Ownership](#-privacy--ownership)
+- [Future Evolution](#-future-evolution)
 
 ---
 
-## 🌱 Introduction
+## 🧭 Introduction
 
-Software development often involves solving similar problems across different projects.
+`dev-vault` is a personal repository for storing and reusing engineering resources.
 
-Dev Vault exists to preserve those solutions in a structured, reusable, and maintainable form.
+It holds materials that can serve multiple projects:
 
-Rather than repeatedly rebuilding the same functionality, developers can:
+- Reusable code snippets and utility functions
+- Automation scripts and shell commands
+- Configuration examples and environment templates
+- Engineering documentation and troubleshooting notes
+- Architecture patterns and implementation references
+- AI prompts, agent instructions, and workflow templates
+- Project setup guides and development checklists
 
-- Discover existing solutions.
-- Reuse proven implementations.
-- Reference established engineering patterns.
-- Share practical knowledge.
-- Improve existing resources.
-- Maintain a consistent engineering standard.
+### Core Objective
 
-Dev Vault is not intended to become a collection of random code snippets. Every resource should have a clear purpose, sufficient context, and a reasonable maintenance path.
+Rather than re-solving the same problem repeatedly, search for previously verified materials, adapt them as needed, and improve them over time.
 
----
-
-## 🧩 Resource Categories
-
-Resources may include:
-
-| Category | Description |
-| --- | --- |
-| `snippets/` | Reusable code snippets |
-| `scripts/` | Automation and utility scripts |
-| `configs/` | Development and application configurations |
-| `docs/` | Technical documentation and references |
-| `patterns/` | Reusable engineering patterns |
-| `prompts/` | Structured AI and engineering prompts |
-| `commands/` | Useful CLI commands and workflows |
-| `templates/` | Project and development templates |
-
-These categories describe the intended resource organization. Actual directories should reflect available and maintained resources.
+> **Engineering principle:** Before building something new, check whether a suitable solution already exists.
 
 ---
 
-## 🏗️ Repository Architecture
-
-The repository should remain predictable, discoverable, and easy to maintain.
+## 🗂️ Repository Architecture
 
 ```text
 dev-vault/
-├── .github/
-│   └── ISSUE_TEMPLATE/
-├── commands/
-├── configs/
-├── docs/
-│   ├── README.md
-│   └── README.bn.md
-├── patterns/
-├── prompts/
-├── scripts/
-├── snippets/
-├── templates/
-├── .gitignore
-└── README.md
+├── snippets/       # Reusable, single-purpose code
+├── scripts/        # Automation and utility scripts
+├── configs/        # Configuration examples and templates
+├── docs/           # Documentation and troubleshooting notes
+├── patterns/       # Architecture and engineering patterns
+├── prompts/        # AI prompts and agent instructions
+├── commands/       # Reusable CLI commands and workflows
+├── templates/      # Project, issue, and documentation templates
+├── README.md       # Repository guide and working standards
+└── .gitignore      # Exclusion rules for sensitive and generated files
 ```
 
-**Architecture principles:**
+### Directory Responsibilities
 
-- Keep resources in clearly defined locations.
-- Avoid unnecessary directory nesting.
-- Use descriptive filenames.
-- Keep documentation close to the resources it explains.
-- Do not introduce directories without a practical need.
-- Preserve compatibility with GitHub repository conventions.
+| Directory | Responsibility | Examples |
+|---|---|---|
+| `snippets/` | Small, reusable code | String helpers, validators |
+| `scripts/` | Automate recurring tasks | Backup, cleanup, setup |
+| `configs/` | Safe configuration templates | `.env.example`, lint configs |
+| `docs/` | Explanations and troubleshooting | Setup guides, runbooks |
+| `patterns/` | Recurring design patterns | Error handling, retry logic |
+| `prompts/` | AI task instructions | Code review, repo audit |
+| `commands/` | Reusable terminal workflows | Git aliases, CLI recipes |
+| `templates/` | Pre-built scaffolds | Issue, PR, resource templates |
+
+> **Organization rule:** Choose a directory based on the resource's *responsibility*, not its file extension.
 
 ---
 
 ## 🔄 Resource Lifecycle
 
-Every resource should follow a clear lifecycle.
+Every resource follows a deliberate lifecycle from identification to reuse.
 
 ```mermaid
 flowchart TD
-    A["💡 Identify a Need"] --> B["🔍 Research Existing Solutions"]
-        B --> C["📝 Define the Resource"]
-            C --> D["🛠️ Implement"]
-                D --> E["🧪 Test and Validate"]
-                    E --> F{"Quality Check"}
-                        F -->|Pass| G["📦 Document and Submit"]
-                            F -->|Fail| D
-                                G --> H["👀 Review"]
-                                    H --> I{"Approved?"}
-                                        I -->|Yes| J["✅ Merge and Maintain"]
-                                            I -->|No| D
-                                            ```
-
-                                            A resource should not be considered ready merely because it works once. Its purpose, usage, limitations, and maintenance implications should also be understood.
-
-                                            ---
-
-                                            ## ⚙️ Engineering Standards
-
-                                            All contributions should prioritize simplicity, clarity, reliability, and maintainability.
-
-                                            ### Core Principles
-
-                                            - **Simplicity First** — Avoid unnecessary complexity and dependencies.
-                                            - **Purpose-Driven Development** — Every file and feature must justify its existence.
-                                            - **Reusability** — Prefer adaptable solutions over project-specific assumptions.
-                                            - **Consistency** — Follow established naming and structural conventions.
-                                            - **Security by Design** — Never compromise security for convenience.
-                                            - **Documentation** — Explain what a resource does and how to use it.
-                                            - **Maintainability** — Consider future updates and compatibility.
-
-                                            ### Engineering Workflow
-
-                                            ```text
-                                            SCAN
-                                              ↓
-                                              PLAN
-                                                ↓
-                                                BUILD
-                                                  ↓
-                                                  TEST
-                                                    ↓
-                                                    VERIFY
-                                                      ↓
-                                                      CHALLENGE
-                                                        ↓
-                                                        FIX
-                                                          ↓
-                                                          REVERIFY
-                                                            ↓
-                                                            COMMIT
-                                                            ```
-
-                                                            > Do not skip validation simply because a change appears small.
-
-                                                            ---
-
-                                                            ## 📝 Commit Convention
-
-                                                            Use meaningful, consistent, and semantic commit messages.
-
-                                                            ### Format
-
-                                                            ```text
-                                                            <type>(<scope>): <description>
-                                                            ```
-
-                                                            ### Recommended Types
-
-                                                            | Type | Purpose |
-                                                            | --- | --- |
-                                                            | `feat` | Introduce a new resource or feature |
-                                                            | `fix` | Correct an existing issue |
-                                                            | `docs` | Add or update documentation |
-                                                            | `refactor` | Improve structure without changing intended behavior |
-                                                            | `test` | Add or update tests |
-                                                            | `chore` | Maintenance and repository configuration |
-                                                            | `security` | Security-related improvements |
-
-                                                            ### Examples
-
-                                                            ```text
-                                                            feat(snippets): add reusable validation helper
-                                                            fix(scripts): handle missing configuration
-                                                            docs(readme): improve repository documentation
-                                                            refactor(configs): simplify environment setup
-                                                            test(commands): add command validation
-                                                            chore(github): update issue templates
-                                                            security(configs): remove exposed credentials
-                                                            ```
-
-                                                            > Commit messages should describe the actual change, not an assumed outcome.
-
-                                                            ---
-
-                                                            ## 🌿 Branch and Pull Request
-
-                                                            All contributions should follow a reviewable workflow.
-
-                                                            ```mermaid
-                                                            flowchart TD
-                                                                A["Create Issue"] --> B["Create Feature Branch"]
-                                                                    B --> C["Implement Changes"]
-                                                                        C --> D["Run Tests and Validation"]
-                                                                            D --> E["Open Pull Request"]
-                                                                                E --> F["Assign Reviewers"]
-                                                                                    F --> G["Review and CI Checks"]
-                                                                                        G --> H{"Approved?"}
-                                                                                            H -->|Changes Required| C
-                                                                                                H -->|Approved| I["Merge Pull Request"]
-                                                                                                ```
+    A(["💡 Resource Needed"]) --> B["🔎 Search Existing Resources"]
+    B --> C{"♻️ Suitable Resource Exists?"}
+
+    C -- "Yes" --> D["🧪 Verify Existing Resource"]
+    D --> E{"✅ Meets Requirements?"}
+    E -- "Yes" --> F["📦 Reuse or Adapt"]
+    E -- "No" --> G["🛠️ Improve or Replace"]
 
-                                                                                                ### Branch Naming
+    C -- "No" --> H["📝 Plan Minimal Solution"]
+    H --> I["⚙️ Create Resource"]
+    I --> J["🧪 Test and Verify"]
 
-                                                                                                Recommended patterns:
+    G --> J
+    J --> K{"🔐 Safe and Reliable?"}
+    K -- "No" --> L["🔧 Fix Identified Issues"]
+    L --> J
+    K -- "Yes" --> M["📚 Document and Store"]
+    F --> N["🔄 Maintain When Needed"]
+    M --> N
+    N --> O(["✅ Ready for Reuse"])
+
+    classDef start fill:#dbeafe,stroke:#2563eb,color:#172554,stroke-width:2px
+    classDef decision fill:#fef3c7,stroke:#d97706,color:#78350f,stroke-width:2px
+    classDef process fill:#dcfce7,stroke:#16a34a,color:#14532d,stroke-width:1px
+    classDef fix fill:#fee2e2,stroke:#dc2626,color:#7f1d1d,stroke-width:1px
+    classDef finish fill:#ede9fe,stroke:#7c3aed,color:#4c1d95,stroke-width:2px
+
+    class A start
+    class C,E,K decision
+    class B,D,F,G,H,I,J,M,N process
+    class L fix
+    class O finish
+```
+
+### Lifecycle Rules
+
+1. **Search first** — Look for an existing resource before building.
+2. **Verify before reuse** — Existence is not proof of correctness.
+3. **Build minimally** — Solve only what is necessary.
+4. **Test before storing** — Use realistic inputs and failure cases.
+5. **Document clearly** — Usage, dependencies, limitations, and security.
+6. **Maintain deliberately** — Update when needs, bugs, or compatibility change.
+
+---
 
-                                                                                                ```text
-                                                                                                feat/<description>
-                                                                                                fix/<description>
-                                                                                                docs/<description>
-                                                                                                refactor/<description>
-                                                                                                chore/<description>
-                                                                                                security/<description>
-                                                                                                ```
+## 📏 Working Standards
+
+### 1. Reusability
 
-                                                                                                ### Pull Request Requirements
+- Clearly state the problem the resource solves
+- Minimize project-specific assumptions
+- Document inputs, outputs, and dependencies
+- Avoid unnecessary abstraction or configuration
+
+### 2. Simplicity
+
+- Prefer the simplest effective solution
+- Do not introduce frameworks or dependencies for trivial tasks
+- Do not duplicate implementations without documented reason
+- Do not add complexity for hypothetical future needs
+
+### 3. Naming
+
+File names must convey purpose and content.
+
+**Good:**
+- `safe-json-parse.js`
+- `git-cleanup-workflow.md`
+- `docker-compose.example.yml`
+- `repository-audit.prompt.md`
+
+**Avoid:**
+- `test2.js`
+- `final-final-new.md`
+- `misc-stuff.txt`
+
+### 4. Documentation
+
+For important resources, document:
+
+- Purpose and use cases
+- Requirements and dependencies
+- Usage and examples
+- Input/output behavior
+- Known limitations
+- Verification status and relevant dates
+
+### 5. Code Quality
+
+- Include appropriate error handling
+- Validate inputs where necessary
+- Use safe defaults
+- Avoid unnecessary side effects
+- Document breaking behavior changes
+- Never claim `PASS` or `Verified` without actual verification
+
+### 6. Configuration
+
+- Never commit real secrets or personal credentials
+- Provide `*.example` configuration templates
+- Document mandatory variables
+- Make environment-specific differences explicit
+
+---
 
-                                                                                                - Every significant change should have a clear purpose.
-                                                                                                - Reference the relevant issue when applicable.
-                                                                                                - Keep pull requests focused and reviewable.
-                                                                                                - Provide a meaningful description.
-                                                                                                - Include relevant tests and validation results.
-                                                                                                - Resolve review feedback before merging.
-                                                                                                - Do not bypass required CI/CD checks or approval rules.
-                                                                                                - No automatic merging without the required validation and review process.
+## 🔬 Standard Workflow
+
+Follow this workflow when adding or modifying a resource:
 
-                                                                                                ---
+```text
+SCAN → PLAN → BUILD → TEST → VERIFY → CHALLENGE → FIX → REVERIFY → COMMIT
+```
+
+| Phase | Action |
+|---|---|
+| `SCAN` | Inspect existing resources, dependencies, constraints |
+| `PLAN` | Define minimal change and expected outcome |
+| `BUILD` | Create or modify the resource |
+| `TEST` | Run relevant tests and practical checks |
+| `VERIFY` | Confirm expected outcomes and acceptance criteria |
+| `CHALLENGE` | Review edge cases, security, and failure modes |
+| `FIX` | Resolve identified issues |
+| `REVERIFY` | Re-test after changes |
+| `COMMIT` | Save verified changes in a meaningful commit |
+
+### Verification Checklist
+
+- [ ] Resource is in the correct directory
+- [ ] Name and purpose are clear
+- [ ] Required documentation exists
+- [ ] Relevant tests have been run
+- [ ] Error and edge cases considered
+- [ ] No secrets or sensitive data added
+- [ ] No unnecessary dependencies or duplicates
+- [ ] Claims match actual verification
+
+---
+
+## 📝 Commit Convention
 
-                                                                                                ## 🔒 Security Standards
+Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/).
 
-                                                                                                Security is a fundamental requirement, not an optional improvement.
+**Format:**
 
-                                                                                                ### General Rules
+```text
+<type>(<scope>): <short description>
+```
 
-                                                                                                - Never commit API keys, tokens, passwords, or private credentials.
-                                                                                                - Use environment variables for sensitive configuration.
-                                                                                                - Provide `.env.example` files where configuration examples are necessary.
-                                                                                                - Validate external input.
-                                                                                                - Avoid unnecessary third-party dependencies.
-                                                                                                - Review scripts before executing them.
-                                                                                                - Document security-sensitive behavior and limitations.
-                                                                                                - Report vulnerabilities responsibly.
+| Type | Purpose |
+|---|---|
+| `feat` | New resource or capability |
+| `fix` | Bug or incorrect behavior fix |
+| `docs` | Documentation changes |
+| `refactor` | Implementation improvement without behavior change |
+| `test` | Adding or updating tests |
+| `chore` | Maintenance and housekeeping |
+| `security` | Security-related improvement |
 
-                                                                                                ### Example `.gitignore`
+### Examples
 
-                                                                                                ```gitignore
-                                                                                                .env
-                                                                                                .env.*
-                                                                                                !.env.example
+```text
+feat(snippets): add safe JSON parsing utility
+fix(scripts): handle missing input file
+docs(configs): document required environment variables
+refactor(commands): simplify git cleanup workflow
+test(snippets): cover invalid JSON input
+chore(repo): organize reusable templates
+security(configs): replace hardcoded credential example
+```
+
+> **Rule:** Describe *what changed* — avoid vague messages like `update` or `final fix` alone.
 
-                                                                                                *.log
-                                                                                                *.tmp
+---
+
+## 🌿 Branch & Pull Request Policy
+
+Even for a personal repository, changes should remain reviewable.
+
+### Branch Naming
+
+```text
+feat/<short-description>
+fix/<short-description>
+docs/<short-description>
+refactor/<short-description>
+chore/<short-description>
+```
+
+### Recommended Workflow
+
+```mermaid
+flowchart TD
+    A(["📌 Identify Change"]) --> B["🌿 Create Branch"]
+    B --> C["🛠️ Implement Change"]
+    C --> D["🧪 Run Relevant Checks"]
+    D --> E{"✅ Checks Pass?"}
 
-                                                                                                node_modules/
-                                                                                                vendor/
+    E -- "No" --> F["🔧 Fix Issues"]
+    F --> D
 
-                                                                                                .DS_Store
-                                                                                                Thumbs.db
-                                                                                                ```
+    E -- "Yes" --> G["📝 Commit Changes"]
+    G --> H["🔍 Review Diff"]
+    H --> I{"📋 Ready to Merge?"}
 
-                                                                                                > **Important:** Adding a file to `.gitignore` does not remove it from Git history if it was already committed. Exposed credentials must be revoked or rotated.
+    I -- "No" --> F
+    I -- "Yes" --> J["🔀 Merge Changes"]
+    J --> K(["✅ Complete"])
 
-                                                                                                ### Security Review
+    classDef start fill:#dbeafe,stroke:#2563eb,color:#172554,stroke-width:2px
+    classDef process fill:#dcfce7,stroke:#16a34a,color:#14532d,stroke-width:1px
+    classDef decision fill:#fef3c7,stroke:#d97706,color:#78350f,stroke-width:2px
+    classDef fix fill:#fee2e2,stroke:#dc2626,color:#7f1d1d,stroke-width:1px
+    classDef finish fill:#ede9fe,stroke:#7c3aed,color:#4c1d95,stroke-width:2px
 
-                                                                                                Before submitting a security-sensitive resource, verify:
+    class A start
+    class B,C,D,G,H,J process
+    class E,I decision
+    class F fix
+    class K finish
+```
 
-                                                                                                - No hardcoded secrets.
-                                                                                                - No unintended data exposure.
-                                                                                                - No unsafe default configuration.
-                                                                                                - No unnecessary elevated permissions.
-                                                                                                - No undocumented security assumptions.
+### Pull Request Checklist
 
-                                                                                                ---
+- [ ] PR title follows Conventional Commit format
+- [ ] Purpose and impact are described
+- [ ] Relevant test/check results are included
+- [ ] Unrelated changes are excluded
+- [ ] No secrets, credentials, or personal data
+- [ ] Merged only after review
 
-                                                                                                ## ♻️ Reuse and Maintenance
+> **Merge policy:** Never bypass CI, workflows, or required validation.
 
-                                                                                                A reusable resource should be understandable outside the project where it originated.
+---
 
-                                                                                                ### Before reusing a resource
+## 🔐 Security Standards
 
-                                                                                                1. Read its documentation.
-                                                                                                2. Check compatibility and dependencies.
-                                                                                                3. Understand its assumptions.
-                                                                                                4. Review potential security implications.
-                                                                                                5. Test it in the target environment.
-                                                                                                6. Adapt it when necessary.
+Security is part of every resource.
 
-                                                                                                ### Maintenance Principles
+### Never Commit
 
-                                                                                                - Prefer improving an existing resource over creating duplicates.
-                                                                                                - Remove obsolete resources through reviewed changes.
-                                                                                                - Document breaking changes.
-                                                                                                - Preserve backward compatibility where practical.
-                                                                                                - Avoid maintaining resources that have no clear purpose.
-                                                                                                - Revisit dependencies and compatibility periodically.
+- API keys or access tokens
+- Passwords, private keys, or session secrets
+- Personal `.env` files
+- Production credentials
+- Private or confidential data without authorization
 
-                                                                                                ---
+### Safe Environment Example
 
-                                                                                                ## 📄 Resource Documentation Template
+Use placeholders in `.env.example`:
 
-                                                                                                Every substantial resource should include documentation appropriate to its complexity.
+```dotenv
+APP_ENV=development
+APP_PORT=3000
+API_BASE_URL=https://example.invalid
+API_KEY=replace_with_your_own_key
+```
 
-                                                                                                A recommended template:
+### Example `.gitignore`
 
-                                                                                                ```markdown
-                                                                                                # Resource Name
+```gitignore
+# Environment secrets
+.env
+.env.*
+!.env.example
 
-                                                                                                ## Purpose
-                                                                                                What problem does this resource solve?
+# Private keys and credentials
+*.pem
+*.key
+secrets/
+credentials/
 
-                                                                                                ## Requirements
-                                                                                                Dependencies, environment, and prerequisites.
+# Dependencies and build output
+node_modules/
+dist/
+build/
 
-                                                                                                ## Usage
-                                                                                                Instructions and examples.
+# Logs and temporary files
+*.log
+.tmp/
+temp/
 
-                                                                                                ## Configuration
-                                                                                                Required and optional settings.
+# Local editor and OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+```
 
-                                                                                                ## Compatibility
-                                                                                                Supported platforms and versions.
+> **Security warning:** `.gitignore` only prevents future tracking. If a secret has already entered Git history, assume it is compromised — revoke or rotate the credential and consider history cleanup.
 
-                                                                                                ## Limitations
-                                                                                                Known constraints and assumptions.
+---
 
-                                                                                                ## Security
-                                                                                                Relevant security considerations.
+## ♻️ Reuse & Maintenance Policy
 
-                                                                                                ## Maintenance
-                                                                                                Known maintenance requirements.
-                                                                                                ```
+### Reuse Before Rebuild
 
-                                                                                                Not every field is mandatory for every resource. Documentation should remain proportional to the resource's complexity.
+Before creating a new implementation, search by keyword, filename, and directory.
 
-                                                                                                ---
+### Avoid Duplication
 
-                                                                                                ## ✅ Quality Standards
+When multiple resources solve the same problem:
 
-                                                                                                Every contribution should meet the following expectations:
+1. Compare their purpose and behavior
+2. Verify which is reliable and current
+3. Designate a canonical resource if needed
+4. Document meaningful differences
+5. Do not delete older resources without a safe migration path
 
-                                                                                                | Area | Requirement |
-                                                                                                | --- | --- |
-                                                                                                | Functionality | Works as documented |
-                                                                                                | Validation | Relevant checks have passed |
-                                                                                                | Security | No known unintended security exposure |
-                                                                                                | Documentation | Purpose and usage are clear |
-                                                                                                | Structure | Follows repository conventions |
-                                                                                                | Maintainability | Avoids unnecessary complexity |
-                                                                                                | Reusability | Does not rely on unexplained project-specific assumptions |
-                                                                                                | Review | Required approval has been obtained |
+### Maintenance Rules
 
-                                                                                                ### Definition of Done
+- Archive or deprecate resources that lose utility
+- Re-verify compatibility when dependencies or APIs change
+- Never hide known limitations
+- Never mark untested resources as tested
+- Understand the impact before making changes
 
-                                                                                                A contribution is complete only when:
+---
 
-                                                                                                - [ ] Implementation is finished.
-                                                                                                - [ ] Relevant tests and validations are completed.
-                                                                                                - [ ] Documentation is updated where necessary.
-                                                                                                - [ ] Security implications are reviewed.
-                                                                                                - [ ] CI/CD checks pass where configured.
-                                                                                                - [ ] Required review and approval are completed.
-                                                                                                - [ ] The pull request is merged.
+## 📄 Resource Documentation Template
 
-                                                                                                ---
+Use this template for important new resources:
 
-                                                                                                ## 🤖 Automation Policy
+```markdown
+# Resource Name
 
-                                                                                                Automation should reduce repetitive work without introducing unnecessary complexity.
+## Purpose
+What problem does this solve?
 
-                                                                                                ### Preferred automation
+## Use Cases
+When is this appropriate?
 
-                                                                                                - Repository validation.
-                                                                                                - Markdown and configuration checks.
-                                                                                                - YAML and JSON validation.
-                                                                                                - Automated tests.
-                                                                                                - Dependency and security checks.
-                                                                                                - Documentation consistency checks.
-                                                                                                - CI/CD workflows.
+## Requirements
+Required runtime, dependencies, or configuration?
 
-                                                                                                ### Automation Principles
+## Usage
+How to use it?
 
-                                                                                                - Automate repeatable and verifiable tasks.
-                                                                                                - Keep workflows understandable.
-                                                                                                - Minimize unnecessary dependencies.
-                                                                                                - Avoid duplicating existing automation.
-                                                                                                - Never allow automation to bypass required approvals.
-                                                                                                - Keep failure messages actionable.
+## Example
+Realistic input and expected output.
 
-                                                                                                > Automation should support engineering decisions, not replace responsible review.
+## Validation
+What tests or verification were performed?
 
-                                                                                                ---
+## Limitations
+Known constraints or edge cases?
 
-                                                                                                ## 🤝 Contribution and Governance
+## Security Notes
+Any security considerations?
 
-                                                                                                Contributions are welcome from developers who value reusable solutions, practical engineering, and maintainable software.
+## Maintenance
+Notes on updates or compatibility.
+```
 
-                                                                                                ### Contribution Process
+Not every section is mandatory — include sections proportional to the resource's importance and complexity.
 
-                                                                                                1. Explore existing resources.
-                                                                                                2. Identify an issue or improvement.
-                                                                                                3. Discuss significant changes when appropriate.
-                                                                                                4. Create a focused branch.
-                                                                                                5. Implement and validate the change.
-                                                                                                6. Submit a pull request.
-                                                                                                7. Address review feedback.
-                                                                                                8. Merge after required approval.
+---
 
-                                                                                                ### Communication Languages
+## 🎯 Quality Principles
 
-                                                                                                Dev Vault documentation and issue submissions aim to support:
+| Principle | Meaning |
+|---|---|
+| **Simplicity First** | Avoid unnecessary complexity |
+| **Reuse Before Rebuild** | Search before building |
+| **Evidence Before Claims** | Never claim verification without evidence |
+| **Security by Default** | Safe behavior from the start |
+| **Minimal Dependencies** | Add only what is necessary |
+| **Explicit Limitations** | State constraints clearly |
+| **Safe Changes** | Verify impact before and after |
+| **Maintainability** | Easy to understand and modify |
 
-                                                                                                - 🇬🇧 English
-                                                                                                - 🇧🇩 বাংলা
-                                                                                                - 🇨🇳 简体中文
-                                                                                                - 🇯🇵 日本語
-                                                                                                - 🇷🇺 Русский
-                                                                                                - 🇪🇸 Español
-                                                                                                - 🇩🇪 Deutsch
+### Definition of Done
 
-                                                                                                Contributors may describe issues and proposals in their preferred supported language.
+A resource is ready only when:
 
-                                                                                                Language support does not imply automatic translation. Technical identifiers, commands, file paths, and error messages should remain accurate.
+- ✅ Purpose and usage are clear
+- ✅ Required verification is complete
+- ✅ Known issues and limitations are documented
+- ✅ Security risks are reviewed
+- ✅ Stored in the correct location
+- ✅ Sufficient guidance for reuse exists
 
-                                                                                                ### Governance
+---
 
-                                                                                                Repository ownership, permissions, review assignments, branch protection, and merge requirements should be managed through GitHub's native repository controls.
+## 🤖 Automation Policy
 
-                                                                                                All changes must follow the applicable contribution and review policies.
+Automate only when it improves reliability or saves meaningful time.
 
-                                                                                                ---
+- Do not build automation frameworks for trivial tasks
+- Verify targets and impact before destructive commands
+- Include error handling and meaningful exit status
+- Provide dry-run options for destructive actions
+- Run relevant lint, test, and security checks in CI
+- Never declare success without verifying real outcomes
 
-                                                                                                ## 🔐 Privacy and Ownership
+---
 
-                                                                                                - Do not submit private credentials or personal information.
-                                                                                                - Respect third-party licenses and intellectual property.
-                                                                                                - Include attribution where required.
-                                                                                                - Do not redistribute resources without checking their license.
-                                                                                                - Keep sensitive information outside public repository files.
+## 🔒 Privacy & Ownership
 
-                                                                                                Contributors are responsible for ensuring that submitted materials can legally and safely be shared.
+- Store only content you have the right to preserve
+- Do not store proprietary or confidential material without permission
+- Minimize personal or sensitive information
+- Follow applicable license and attribution requirements for third-party resources
+- Review all files and Git history before publishing publicly
 
-                                                                                                ---
+---
 
-                                                                                                ## 🧭 Future Direction
+## 🧱 Future Evolution
 
-                                                                                                Dev Vault may evolve through independently scoped improvements.
+`dev-vault` will evolve in deliberate, minimal steps.
 
-                                                                                                Potential areas include:
+Possible future improvements:
 
-                                                                                                - Better resource discovery.
-                                                                                                - Improved documentation and navigation.
-                                                                                                - Automated quality validation.
-                                                                                                - Expanded reusable templates.
-                                                                                                - Security and compatibility reviews.
-                                                                                                - Contribution experience improvements.
-                                                                                                - Multilingual documentation.
-                                                                                                - Resource versioning and lifecycle management.
+- Resource metadata and tagging conventions
+- Automated Markdown and configuration validation
+- Searchable reusable resource index
+- Script testing and linting workflow
+- Dependency and security scanning
+- Versioned templates with compatibility notes
+- Duplicate resource detection
 
-                                                                                                Future development should be driven by actual needs rather than unnecessary expansion.
+> **Scope discipline:** Features are added only when backed by real need, clear benefit, and sustainable maintenance cost.
 
-                                                                                                ---
+---
 
-                                                                                                ## 🧠 Engineering Philosophy
+<div align="center">
 
-                                                                                                > **Build only what must exist. Reuse what already works. Verify before trusting.**
+### 🧠 Engineering Philosophy
 
-                                                                                                Dev Vault follows a few fundamental beliefs:
+**Store less. Reuse more. Verify everything.**
 
-                                                                                                - Small, focused resources are easier to maintain.
-                                                                                                - Good documentation preserves engineering knowledge.
-                                                                                                - Reuse should reduce complexity, not create it.
-                                                                                                - Security and quality must be considered from the beginning.
-                                                                                                - Every contribution should have a clear reason to exist.
+*Small resources, clear purpose, verified outcomes.*
 
-                                                                                                The objective is not to collect more code. It is to make useful engineering knowledge easier to preserve, discover, and apply.
+---
 
-                                                                                                ---
+[⬅️ Back to Repository Home](../README.md) · [বাংলা ডকুমেন্টেশন](./README.bn.md)
 
-                                                                                                ## 🔐 Dev Vault
-
-                                                                                                *Write once. Reuse wisely. Keep it simple.*
-
-                                                                                                Built for practical engineering, responsible reuse, and long-term maintainability.
+</div>
