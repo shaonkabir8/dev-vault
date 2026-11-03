@@ -1,0 +1,123 @@
+# Purpose: propose improvements to repository architecture, workflow, automation,
+# quality, or maintainability. Deliberately kept to three required narrative
+# fields (limitation, proposal, benefit) so it does not become a questionnaire.
+name: ⚡ Improvement Proposal
+description: Propose an improvement to architecture, workflows, automation, or quality. Write in English, বাংলা, 简体中文, 日本語, Русский, Español, or Deutsch.
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **English** — Write everything below in the language you select. Keep commands, file paths, URLs, workflow names, and identifiers exactly as they are; do not translate them. Nothing here is machine-translated.
+        **বাংলা** — নিচে নির্বাচিত ভাষায় লিখুন। কমান্ড, ফাইল পাথ, URL, ওয়ার্কফ্লো নাম ও আইডেন্টিফায়ার হুবহু রাখুন, অনুবাদ করবেন না। এখানে স্বয়ংক্রিয় অনুবাদ হয় না।
+        **简体中文** — 请使用下方选择的语言填写。命令、文件路径、URL、工作流名称和标识符请保持原样，不要翻译。本表单不会自动翻译。
+        **日本語** — 下で選んだ言語で記入してください。コマンド、ファイルパス、URL、ワークフロー名、識別子はそのまま記載し、翻訳しないでください。自動翻訳は行いません。
+        **Русский** — Пишите на выбранном ниже языке. Команды, пути к файлам, URL, названия workflow и идентификаторы приводите без изменений, не переводите их. Автоматический перевод не выполняется.
+        **Español** — Escribe en el idioma que elijas abajo. Copia comandos, rutas, URL, nombres de workflows e identificadores tal cual, sin traducirlos. Aquí no se traduce automáticamente.
+        **Deutsch** — Schreibe in der unten gewählten Sprache. Befehle, Dateipfade, URLs, Workflow-Namen und Bezeichner unverändert übernehmen, nicht übersetzen. Es findet keine automatische Übersetzung statt.
+
+        This form is for the repository itself — its structure, automation, and standards. Use the Bug Report form for something that is broken.
+
+  - type: dropdown
+    id: language
+    attributes:
+      label: "Issue language · ভাষা · 语言 · 言語 · Язык · Idioma · Sprache"
+      description: Choose the language you are writing in. All seven are read; you do not need to submit a translation.
+      options:
+        - English
+        - বাংলা (Bengali)
+        - 简体中文 (Simplified Chinese)
+        - 日本語 (Japanese)
+        - Русский (Russian)
+        - Español (Spanish)
+        - Deutsch (German)
+      default: 0
+    validations:
+      required: true
+
+  - type: input
+    id: improvement-title
+    attributes:
+      label: "Improvement title · উন্নতির শিরোনাম · 改进标题 · 改善のタイトル · Название улучшения · Título de la mejora · Titel der Verbesserung"
+      description: One line. Use the language you selected.
+      placeholder: Run the link checker on a schedule
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: "Improvement category · বিভাগ · 类别 · カテゴリ · Категория · Categoría · Kategorie"
+      description: Pick the area the proposal mainly changes.
+      options:
+        - Repository structure
+        - Workflows and CI
+        - Automation and tooling
+        - Issue and PR templates
+        - Documentation standards
+        - Security and secrets handling
+        - Linting and formatting
+        - Developer experience
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: limitation
+    attributes:
+      label: "Current limitation · বর্তমান সীমাবদ্ধতা · 当前局限 · 現在の制約 · Текущее ограничение · Limitación actual · Aktuelle Einschränkung"
+      description: What is painful, slow, risky, or missing today? Concrete examples beat general statements.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: "Proposed improvement · প্রস্তাবিত উন্নতি · 改进方案 · 改善案 · Предлагаемое улучшение · Mejora propuesta · Vorgeschlagene Verbesserung"
+      description: What should change, and how would it work?
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: "Expected benefits · প্রত্যাশিত সুবিধা · 预期收益 · 期待される効果 · Ожидаемая польза · Beneficios esperados · Erwarteter Nutzen"
+      description: What improves — time, correctness, safety, or maintainability — and for whom.
+    validations:
+      required: true
+
+  - type: textarea
+    id: considerations
+    attributes:
+      label: "Implementation considerations · বাস্তবায়ন বিবেচনা · 实施考虑 · 実装上の考慮点 · Соображения по реализации · Consideraciones de implementación · Umsetzungshinweise"
+      description: Optional. Trade-offs, migration cost, or breaking changes.
+    validations:
+      required: false
+
+  - type: textarea
+    id: references
+    attributes:
+      label: "Relevant references · প্রাসঙ্গিক রেফারেন্স · 相关参考 · 関連する参考情報 · Полезные ссылки · Referencias · Relevante Quellen"
+      description: Optional. Prior art, specs, or links to similar implementations.
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: "Additional context · অতিরিক্ত তথ্য · 补充信息 · 補足情報 · Дополнительный контекст · Contexto adicional · Zusätzlicher Kontext"
+      description: Optional. Anything else that helps evaluate the proposal.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: "Confirmations · নিশ্চিতকরণ · 确认 · 確認 · Подтверждения · Confirmaciones · Bestätigungen"
+      description: Both confirmations are mandatory before submitting.
+      options:
+        - label: I searched existing issues and this is not already proposed or implemented.
+          required: true
+        - label: This proposal does not require an external service or paid dependency.
+          required: true
