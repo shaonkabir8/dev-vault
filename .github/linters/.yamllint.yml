@@ -1,0 +1,50 @@
+# Yamllint configuration — keeps every YAML file in the repository parseable
+# and consistently formatted. Workflow-specific semantics are covered by
+# actionlint; this file covers everything actionlint does not read
+# (Dependabot config, issue forms, any future config file).
+
+extends: default
+
+ignore: |
+  .git/
+  node_modules/
+  _site/
+
+rules:
+  # GitHub workflows legitimately use long run blocks and long URLs.
+  line-length: disable
+
+  # `on:` is a valid GitHub Actions key; the default truthy rule would flag it.
+  truthy:
+    allowed-values: ["true", "false", "on", "off", "yes", "no"]
+    check-keys: false
+
+  # Require a single space before inline comments, as the repo's files use.
+  comments:
+    require-starting-space: true
+    min-spaces-from-content: 1
+
+  # Do not force `---` at the top of every file.
+  document-start: disable
+
+  # Keep flow collections compact: { key: value }
+  braces:
+    min-spaces-inside: 0
+    max-spaces-inside: 1
+  brackets:
+    min-spaces-inside: 0
+    max-spaces-inside: 0
+
+  indentation:
+    spaces: 2
+    indent-sequences: consistent
+    check-multi-line-strings: false
+
+  # Empty values are meaningful in workflows (e.g. `shell:` defaults).
+  empty-values:
+    forbid-in-block-mappings: false
+    forbid-in-flow-mappings: false
+
+  key-duplicates: enable
+  trailing-spaces: enable
+  new-line-at-end-of-file: enable

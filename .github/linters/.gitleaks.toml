@@ -1,0 +1,34 @@
+# Gitleaks configuration — secret detection for shaonkabir8/dev-vault.
+#
+# Extends the default rule set (no rules weakened) and narrows false positives
+# to the documentation placeholders this repository publishes on purpose.
+#
+# Note: gitleaks >= 8.19 rejects a top-level [allowlist] table when
+# [[allowlists]] entries are also present, so only the [[allowlists]] form is
+# used below. Each block states exactly what it excuses.
+
+title = "dev-vault secret scanning"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Documentation files that publish safe placeholder values on purpose"
+paths = [
+  '''README\.md$''',
+  '''docs/README\.md$''',
+  '''docs/README\.bn\.md$''',
+  '''\.github/README\.md$''',
+  '''\.github/PULL_REQUEST_TEMPLATE\.md$''',
+  '''\.env\.example$''',
+  '''\.example\.(ya?ml|json|env|toml|ini)$''',
+]
+
+[[allowlists]]
+description = "Exact placeholder strings the docs use as safe template values"
+regexTarget = "match"
+regexes = [
+  '''replace_with_your_own_key''',
+  '''https://example\.invalid''',
+  '''your-token-here''',
+]
