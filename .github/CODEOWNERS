@@ -1,0 +1,23 @@
+# CODEOWNERS — default review ownership for shaonkabir8/dev-vault
+#
+# Syntax: <pattern> <owner> [<owner> ...]
+# Last matching pattern wins. Keep this file small: it exists so every change
+# has a named owner, not to model a large team.
+
+# Default owner for the whole repository.
+* @shaonkabir8
+
+# Centralized automation and repository configuration.
+/.github/ @shaonkabir8
+/.github/workflows/ @shaonkabir8
+/.github/linters/ @shaonkabir8
+
+# Documentation and the reusable resource directories that the docs describe.
+/docs/ @shaonkabir8
+/snippets/ @shaonkabir8
+/scripts/ @shaonkabir8
+/configs/ @shaonkabir8
+/patterns/ @shaonkabir8
+/prompts/ @shaonkabir8
+/commands/ @shaonkabir8
+/templates/ @shaonkabir8

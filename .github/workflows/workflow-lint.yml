@@ -1,0 +1,61 @@
+name: Workflow Lint
+
+# Lints the workflow files themselves. This is the check that keeps the rest of
+# the .github/ automation trustworthy: a broken workflow that never runs is
+# worse than no workflow, because it looks green by absence.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/**"
+      - ".github/actions/**"
+      - ".github/linters/.yamllint.yml"
+  pull_request:
+    paths:
+      - ".github/workflows/**"
+      - ".github/actions/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: workflow-lint-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  actionlint:
+    name: actionlint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      ACTIONLINT_VERSION: "1.7.12"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install actionlint
+        run: |
+          set -euo pipefail
+          archive="actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz"
+          base="https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}"
+          curl -sSfL -o "/tmp/${archive}" "${base}/${archive}"
+          curl -sSfL -o /tmp/actionlint_checksums.txt "${base}/actionlint_${ACTIONLINT_VERSION}_checksums.txt"
+          expected="$(grep " ${archive}$" /tmp/actionlint_checksums.txt | awk '{print $1}')"
+          actual="$(sha256sum "/tmp/${archive}" | awk '{print $1}')"
+          if [ -z "${expected}" ] || [ "${expected}" != "${actual}" ]; then
+            echo "::error::checksum verification failed for ${archive}"
+            exit 1
+          fi
+          tar -xzf "/tmp/${archive}" -C /tmp actionlint
+          install -m 0755 /tmp/actionlint /usr/local/bin/actionlint
+          actionlint --version
+
+      - name: Lint workflows
+        run: |
+          set -euo pipefail
+          actionlint -no-color .github/workflows/*.yml

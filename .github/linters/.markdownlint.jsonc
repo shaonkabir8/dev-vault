@@ -1,0 +1,63 @@
+{
+  // Base markdownlint configuration for shaonkabir8/dev-vault.
+  //
+  // The repository already publishes three landing-page style documents with an
+  // established visual convention: centered HTML blocks, emoji-prefixed
+  // headings, and compact pipe tables. Rules are relaxed only where that
+  // convention is deliberate; every remaining default still applies.
+
+  // Prose, tables, and badge lines are intentionally wide; hard-wrapping them
+  // produces noisy diffs without improving readability.
+  "MD013": false,
+
+  // The landing page is laid out with centered HTML blocks (<div align="center">).
+  "MD033": false,
+
+  // Italic subtitles inside centered blocks act as visual taglines, and
+  // "### Engineering Philosophy" closing blocks use bold emphasis deliberately.
+  "MD036": false,
+
+  // Duplicate headings are allowed across separate sections, never within one.
+  "MD024": {
+    "siblings_only": true
+  },
+
+  // Code blocks must be fenced; indented blocks inside lists are ambiguous.
+  "MD046": {
+    "style": "fenced"
+  },
+
+  // Numbered lists must use sequential numbering consistent with the source.
+  "MD029": {
+    "style": "ordered"
+  },
+
+  // Trailing spaces used for a hard line break are permitted; more are not.
+  "MD009": {
+    "br_spaces": 2,
+    "list_item_empty_lines": false
+  },
+
+  // Compact tables (|---|---|) are the established style in all published docs.
+  // Forcing padded pipes would rewrite every existing table for no reader gain.
+  "MD060": false,
+  "MD055": {
+    "style": "no_pipe"
+  },
+
+  // Emoji-prefixed headings produce anchors with a leading hyphen
+  // (e.g. "## 🗂️ Repository Architecture" -> "#-repository-architecture").
+  // Those anchors are correct on GitHub; this rule does not model them.
+  "MD051": false,
+
+  // The published docs place sub-headings and lists directly after intro lines.
+  // Loosening these keeps the landing-page rhythm without hiding real defects
+  // (heading levels and list structure are still enforced by MD001/MD004).
+  "MD022": false,
+  "MD032": false,
+
+  // Blank lines inside lists are used for readability in the docs.
+  "MD012": {
+    "maximum": 1
+  }
+}

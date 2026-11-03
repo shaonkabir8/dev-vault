@@ -1,0 +1,37 @@
+name: Markdown Lint
+
+# Enforces one formatting standard across the vault's Markdown, which is the
+# repository's entire product surface today.
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+# Read-only: linting must never be able to write to the repository.
+permissions:
+  contents: read
+
+concurrency:
+  group: markdown-lint-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  markdownlint:
+    name: markdownlint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Lint Markdown files
+        uses: DavidAnson/markdownlint-cli2-action@v25.0.0
+        with:
+          config: .github/linters/.markdownlint.jsonc
+          globs: |
+            **/*.md

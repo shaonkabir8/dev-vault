@@ -1,0 +1,70 @@
+name: Resource request
+description: Propose a reusable snippet, script, config, pattern, prompt, or command.
+title: "feat: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to propose a new reusable resource, or an improvement to an
+        existing one. Check first whether the vault already covers it —
+        reuse beats rebuild.
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: Choose by responsibility, not by file extension.
+      options:
+        - snippets
+        - scripts
+        - configs
+        - docs
+        - patterns
+        - prompts
+        - commands
+        - templates
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What recurring problem should this resource solve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed resource
+      description: What should exist, and roughly how should it work?
+    validations:
+      required: true
+
+  - type: input
+    id: existing
+    attributes:
+      label: Existing coverage checked
+      description: Files or directories you searched before opening this request.
+      placeholder: searched snippets/ and scripts/ for "backup"
+
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Requirements and constraints
+      description: Runtimes, dependencies, portability limits, or security considerations.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I searched the vault and this does not duplicate an existing resource.
+          required: true
+        - label: This resource can be shared without proprietary or confidential content.
+          required: true

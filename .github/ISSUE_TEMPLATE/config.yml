@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://github.com/shaonkabir8/dev-vault/blob/main/docs/README.md
+    about: Working standards, resource lifecycle, commit and branch policy.
+  - name: Security concern
+    url: https://github.com/shaonkabir8/dev-vault/security/advisories/new
+    about: Report a leaked secret or vulnerability privately instead of opening an issue.

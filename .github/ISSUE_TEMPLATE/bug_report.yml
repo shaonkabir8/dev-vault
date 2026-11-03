@@ -1,0 +1,70 @@
+name: Bug report
+description: Report a broken script, snippet, config, or incorrect documentation.
+title: "fix: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. Please describe what actually happened,
+        not only what you expected — the difference is what makes a report actionable.
+
+  - type: input
+    id: resource
+    attributes:
+      label: Affected resource
+      description: Path to the file or directory involved.
+      placeholder: scripts/git-cleanup.sh
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Observed behavior, including the exact error output.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: The behavior you expected instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps that reliably trigger the problem.
+      placeholder: |
+        1. Run ...
+        2. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, runtime and version, shell, and any relevant dependency versions.
+      placeholder: |
+        OS: Ubuntu 24.04
+        Runtime: Node 22.11.0
+        Shell: bash 5.2
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I searched existing issues and this is not a duplicate.
+          required: true
+        - label: I removed any secrets or personal data from this report.
+          required: true
