@@ -1,57 +1,102 @@
-name: Bug report
-description: Report a broken script, snippet, config, or incorrect documentation.
+# Purpose: report a broken, incorrect, or outdated resource in this repository.
+# Multilingual policy: the language selector is required and drives the whole
+# submission; labels carry every supported language in one fixed order
+# (English, Bengali, Chinese, Japanese, Russian, Spanish, German) so a
+# contributor can recognise each field without machine translation.
+name: 🐞 Bug Report
+description: Report a broken, incorrect, or outdated resource. Write in English, বাংলা, 简体中文, 日本語, Русский, Español, or Deutsch.
 title: "fix: "
-labels:
-  - bug
+labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for reporting a problem. Please describe what actually happened,
-        not only what you expected — the difference is what makes a report actionable.
+        **English** — Write everything below in the language you select. Keep commands, file paths, URLs, identifiers, and error output exactly as they are; do not translate them. Nothing here is machine-translated.
+        **বাংলা** — নিচে নির্বাচিত ভাষায় লিখুন। কমান্ড, ফাইল পাথ, URL, আইডেন্টিফায়ার ও এরর আউটপুট হুবহু রাখুন, অনুবাদ করবেন না। এখানে স্বয়ংক্রিয় অনুবাদ হয় না।
+        **简体中文** — 请使用下方选择的语言填写。命令、文件路径、URL、标识符和错误输出请保持原样，不要翻译。本表单不会自动翻译。
+        **日本語** — 下で選んだ言語で記入してください。コマンド、ファイルパス、URL、識別子、エラー出力はそのまま記載し、翻訳しないでください。自動翻訳は行いません。
+        **Русский** — Пишите на выбранном ниже языке. Команды, пути к файлам, URL, идентификаторы и текст ошибок приводите без изменений, не переводите их. Автоматический перевод не выполняется.
+        **Español** — Escribe en el idioma que elijas abajo. Copia comandos, rutas, URL, identificadores y mensajes de error tal cual, sin traducirlos. Aquí no se traduce automáticamente.
+        **Deutsch** — Schreibe in der unten gewählten Sprache. Befehle, Dateipfade, URLs, Bezeichner und Fehlerausgaben unverändert übernehmen, nicht übersetzen. Es findet keine automatische Übersetzung statt.
+
+        One problem per report. Fields marked required must be completed.
+
+  - type: dropdown
+    id: language
+    attributes:
+      label: "Issue language · ভাষা · 语言 · 言語 · Язык · Idioma · Sprache"
+      description: Choose the language you are writing in. All seven are read; you do not need to submit a translation.
+      options:
+        - English
+        - বাংলা (Bengali)
+        - 简体中文 (Simplified Chinese)
+        - 日本語 (Japanese)
+        - Русский (Russian)
+        - Español (Spanish)
+        - Deutsch (German)
+      default: 0
+    validations:
+      required: true
 
   - type: input
-    id: resource
+    id: affected-resource
     attributes:
-      label: Affected resource
-      description: Path to the file or directory involved.
+      label: "Affected resource or path · ক্ষতিগ্রস্ত ফাইল · 受影响的文件 · 影響を受けるファイル · Затронутый файл · Archivo afectado · Betroffene Datei"
+      description: Repository path or link. Keep the path verbatim.
       placeholder: scripts/git-cleanup.sh
     validations:
       required: true
 
   - type: textarea
-    id: what-happened
+    id: problem
     attributes:
-      label: What happened
-      description: Observed behavior, including the exact error output.
-      render: shell
+      label: "Problem description · সমস্যার বিবরণ · 问题描述 · 問題の説明 · Описание проблемы · Descripción del problema · Problembeschreibung"
+      description: What is wrong, in your own words.
     validations:
       required: true
 
   - type: textarea
     id: expected
     attributes:
-      label: What you expected
-      description: The behavior you expected instead.
+      label: "Expected behavior · প্রত্যাশিত আচরণ · 预期行为 · 期待される動作 · Ожидаемое поведение · Comportamiento esperado · Erwartetes Verhalten"
+      description: What should have happened.
     validations:
       required: true
 
   - type: textarea
-    id: reproduce
+    id: actual
     attributes:
-      label: Steps to reproduce
-      description: Minimal steps that reliably trigger the problem.
+      label: "Actual behavior · প্রকৃত আচরণ · 实际行为 · 実際の動作 · Фактическое поведение · Comportamiento real · Tatsächliches Verhalten"
+      description: What happened instead. Paste error output verbatim, without translation.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: "Reproduction steps · পুনরুৎপাদনের ধাপ · 复现步骤 · 再現手順 · Шаги воспроизведения · Pasos para reproducir · Schritte zur Reproduktion"
+      description: Optional but strongly recommended. Minimal steps that trigger the problem.
       placeholder: |
         1. Run ...
         2. Observe ...
     validations:
-      required: true
+      required: false
 
   - type: textarea
-    id: environment
+    id: evidence
     attributes:
-      label: Environment
-      description: OS, runtime and version, shell, and any relevant dependency versions.
+      label: "Error messages or evidence · এরর বার্তা · 错误信息 · エラーメッセージ · Сообщения об ошибках · Mensajes de error · Fehlermeldungen"
+      description: Optional. Stack traces, logs, config keys, or API identifiers, kept exactly as produced.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: "Additional context · অতিরিক্ত তথ্য · 补充信息 · 補足情報 · Дополнительный контекст · Contexto adicional · Zusätzlicher Kontext"
+      description: Optional. Environment (OS, runtime version, shell), related issues, or anything else that helps.
       placeholder: |
         OS: Ubuntu 24.04
         Runtime: Node 22.11.0
@@ -62,9 +107,10 @@ body:
   - type: checkboxes
     id: confirmations
     attributes:
-      label: Confirmations
+      label: "Confirmations · নিশ্চিতকরণ · 确认 · 確認 · Подтверждения · Confirmaciones · Bestätigungen"
+      description: Both confirmations are mandatory before submitting.
       options:
         - label: I searched existing issues and this is not a duplicate.
           required: true
-        - label: I removed any secrets or personal data from this report.
+        - label: I removed secrets, tokens, and personal data from this report.
           required: true
