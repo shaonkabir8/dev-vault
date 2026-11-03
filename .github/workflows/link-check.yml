@@ -1,0 +1,42 @@
+name: Link Check
+
+# Validates relative links and in-page heading anchors across all Markdown.
+# Runs fully offline and deterministically: no network dependency, so a red run
+# always means a real broken reference rather than an unreachable host.
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: link-check-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  internal-links:
+    name: Internal links and anchors
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Check relative links and anchors
+        run: |
+          python .github/scripts/check_links.py \
+            --allowlist .github/linters/link-check-allowlist.txt \
+            --github-actions \
+            .

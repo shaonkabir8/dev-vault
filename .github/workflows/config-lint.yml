@@ -1,0 +1,55 @@
+name: Config Lint
+
+# Validates every YAML file that actionlint does not inspect: Dependabot config,
+# issue forms, and future resource configs. Catches indentation and duplicate-key
+# mistakes that GitHub would otherwise reject only at the moment of use.
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: config-lint-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  yamllint:
+    name: yamllint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Install yamllint
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check --quiet "yamllint==1.35.1"
+          yamllint --version
+
+      - name: Lint YAML
+        run: |
+          set -euo pipefail
+          # Discover YAML explicitly so a new file cannot be silently skipped.
+          mapfile -t files < <(
+            find . -path ./.git -prune -o \
+              \( -name '*.yml' -o -name '*.yaml' \) -print \
+              | grep -v -E '^\./(_site|node_modules|vendor)/' \
+              | sort
+          )
+          printf 'YAML files to lint:\n'
+          printf '  %s\n' "${files[@]}"
+          yamllint --config-file .github/linters/.yamllint.yml --strict "${files[@]}"
