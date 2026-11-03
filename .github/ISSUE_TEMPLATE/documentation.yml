@@ -1,29 +1,21 @@
-# Purpose: report documentation errors, missing information, or broken references.
-# The issue-type dropdown is a fixed short list so triage stays predictable;
-# suggested correction is optional because reporting is cheaper than fixing.
-name: 📚 Documentation
-description: Report incorrect, missing, or broken documentation. Write in English, বাংলা, 简体中文, 日本語, Русский, Español, or Deutsch.
+name: 📝 Documentation Issue
+description: Report unclear, incorrect, or missing documentation.
 title: "docs: "
-labels: ["documentation"]
+labels:
+  - documentation
 body:
   - type: markdown
     attributes:
       value: |
-        **English** — Write everything below in the language you select. Keep file paths, URLs, headings, and identifiers exactly as they are; do not translate them. Nothing here is machine-translated.
-        **বাংলা** — নিচে নির্বাচিত ভাষায় লিখুন। ফাইল পাথ, URL, শিরোনাম ও আইডেন্টিফায়ার হুবহু রাখুন, অনুবাদ করবেন না। এখানে স্বয়ংক্রিয় অনুবাদ হয় না।
-        **简体中文** — 请使用下方选择的语言填写。文件路径、URL、标题和标识符请保持原样，不要翻译。本表单不会自动翻译。
-        **日本語** — 下で選んだ言語で記入してください。ファイルパス、URL、見出し、識別子はそのまま記載し、翻訳しないでください。自動翻訳は行いません。
-        **Русский** — Пишите на выбранном ниже языке. Пути к файлам, URL, заголовки и идентификаторы приводите без изменений, не переводите их. Автоматический перевод не выполняется.
-        **Español** — Escribe en el idioma que elijas abajo. Copia rutas, URL, encabezados e identificadores tal cual, sin traducirlos. Aquí no se traduce automáticamente.
-        **Deutsch** — Schreibe in der unten gewählten Sprache. Dateipfade, URLs, Überschriften und Bezeichner unverändert übernehmen, nicht übersetzen. Es findet keine automatische Übersetzung statt.
-
-        One documentation problem per issue.
+        You may write in **English, বাংলা, 简体中文, 日本語, Русский, Español, or Deutsch** — we will reply in the same language when possible.
+        Keep commands, file paths, URLs, identifiers, and error output exactly as written; do not translate them.
+        One issue per report. Required fields must be completed.
 
   - type: dropdown
     id: language
     attributes:
-      label: "Issue language · ভাষা · 语言 · 言語 · Язык · Idioma · Sprache"
-      description: Choose the language you are writing in. All seven are read; you do not need to submit a translation.
+      label: Language
+      description: Records your preferred reply language.
       options:
         - English
         - বাংলা (Bengali)
@@ -39,17 +31,16 @@ body:
   - type: input
     id: affected-document
     attributes:
-      label: "Affected document or path · নথি বা পাথ · 受影响的文档 · 対象ドキュメント · Затронутый документ · Documento afectado · Betroffenes Dokument"
-      description: File path, URL, or heading. Keep the path verbatim.
-      placeholder: docs/README.md → Commit Convention
+      label: Affected documentation
+      description: File path, URL, or heading.
+      placeholder: docs/install.md
     validations:
       required: true
 
   - type: dropdown
     id: issue-type
     attributes:
-      label: "Documentation issue type · সমস্যার ধরন · 问题类型 · 問題の種類 · Тип проблемы · Tipo de problema · Art des Problems"
-      description: Pick the closest match.
+      label: Issue type
       options:
         - Incorrect or outdated information
         - Missing information
@@ -64,7 +55,7 @@ body:
   - type: textarea
     id: problem
     attributes:
-      label: "Problem description · সমস্যার বিবরণ · 问题描述 · 問題の説明 · Описание проблемы · Descripción del problema · Problembeschreibung"
+      label: Problem
       description: What is wrong, and where. Quote the affected text if it helps.
     validations:
       required: true
@@ -72,15 +63,15 @@ body:
   - type: textarea
     id: suggested-fix
     attributes:
-      label: "Suggested correction · প্রস্তাবিত সংশোধন · 建议修改 · 修正案 · Предлагаемое исправление · Corrección sugerida · Vorgeschlagene Korrektur"
-      description: Optional. Wording or structure you would accept instead.
+      label: Expected documentation
+      description: The wording or structure you expected to find.
     validations:
-      required: false
+      required: true
 
   - type: textarea
     id: references
     attributes:
-      label: "Relevant references · প্রাসঙ্গিক রেফারেন্স · 相关参考 · 関連する参考情報 · Полезные ссылки · Referencias · Relevante Quellen"
+      label: References
       description: Optional. Links or upstream documentation supporting the correction.
     validations:
       required: false
@@ -88,7 +79,7 @@ body:
   - type: textarea
     id: context
     attributes:
-      label: "Additional context · অতিরিক্ত তথ্য · 补充信息 · 補足情報 · Дополнительный контекст · Contexto adicional · Zusätzlicher Kontext"
+      label: Additional context
       description: Optional. Anything else that helps triage.
     validations:
       required: false
@@ -96,10 +87,10 @@ body:
   - type: checkboxes
     id: confirmations
     attributes:
-      label: "Confirmations · নিশ্চিতকরণ · 确认 · 確認 · Подтверждения · Confirmaciones · Bestätigungen"
-      description: Both confirmations are mandatory before submitting.
+      label: Confirmations
+      description: Both confirmations are required before submitting.
       options:
-        - label: I checked the latest state of the document on the default branch.
+        - label: I have checked that this documentation issue has not already been reported.
           required: true
-        - label: I searched existing issues and this is not a duplicate.
+        - label: I have removed secrets, tokens, passwords, and other sensitive information.
           required: true
