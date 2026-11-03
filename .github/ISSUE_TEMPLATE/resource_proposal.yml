@@ -1,0 +1,120 @@
+# Purpose: propose a reusable engineering resource for the vault.
+# Renamed from resource_request.yml (git mv) to match the approved structure;
+# categories mirror the directories documented in docs/README.md, so the form
+# asks for a decision the repository already made instead of inventing taxonomy.
+name: 🧩 Resource Proposal
+description: Propose a reusable snippet, script, config, pattern, prompt, command, or template. Write in English, বাংলা, 简体中文, 日本語, Русский, Español, or Deutsch.
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **English** — Write everything below in the language you select. Keep commands, file paths, URLs, identifiers, and code exactly as they are; do not translate them. Nothing here is machine-translated.
+        **বাংলা** — নিচে নির্বাচিত ভাষায় লিখুন। কমান্ড, ফাইল পাথ, URL, আইডেন্টিফায়ার ও কোড হুবহু রাখুন, অনুবাদ করবেন না। এখানে স্বয়ংক্রিয় অনুবাদ হয় না।
+        **简体中文** — 请使用下方选择的语言填写。命令、文件路径、URL、标识符和代码请保持原样，不要翻译。本表单不会自动翻译。
+        **日本語** — 下で選んだ言語で記入してください。コマンド、ファイルパス、URL、識別子、コードはそのまま記載し、翻訳しないでください。自動翻訳は行いません。
+        **Русский** — Пишите на выбранном ниже языке. Команды, пути к файлам, URL, идентификаторы и код приводите без изменений, не переводите их. Автоматический перевод не выполняется.
+        **Español** — Escribe en el idioma que elijas abajo. Copia comandos, rutas, URL, identificadores y código tal cual, sin traducirlos. Aquí no se traduce automáticamente.
+        **Deutsch** — Schreibe in der unten gewählten Sprache. Befehle, Dateipfade, URLs, Bezeichner und Code unverändert übernehmen, nicht übersetzen. Es findet keine automatische Übersetzung statt.
+
+        Check first whether the vault already covers this — reuse beats rebuild.
+
+  - type: dropdown
+    id: language
+    attributes:
+      label: "Issue language · ভাষা · 语言 · 言語 · Язык · Idioma · Sprache"
+      description: Choose the language you are writing in. All seven are read; you do not need to submit a translation.
+      options:
+        - English
+        - বাংলা (Bengali)
+        - 简体中文 (Simplified Chinese)
+        - 日本語 (Japanese)
+        - Русский (Russian)
+        - Español (Spanish)
+        - Deutsch (German)
+      default: 0
+    validations:
+      required: true
+
+  - type: input
+    id: resource-name
+    attributes:
+      label: "Resource name · রিসোর্সের নাম · 资源名称 · リソース名 · Название ресурса · Nombre del recurso · Ressourcenname"
+      description: Short, descriptive name. Use the language you selected.
+      placeholder: Safe JSON parser
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: "Category · বিভাগ · 类别 · カテゴリ · Категория · Categoría · Kategorie"
+      description: Choose by responsibility, not by file extension.
+      options:
+        - snippets — reusable single-purpose code
+        - scripts — automation and utilities
+        - configs — configuration and environment templates
+        - docs — explanations and troubleshooting
+        - patterns — architecture and design references
+        - prompts — AI prompts and agent instructions
+        - commands — CLI recipes and terminal workflows
+        - templates — project, issue, and document scaffolds
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "Resource description · রিসোর্সের বিবরণ · 资源描述 · リソースの説明 · Описание ресурса · Descripción del recurso · Ressourcenbeschreibung"
+      description: What should exist, and what problem does it solve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: fit
+    attributes:
+      label: "Why it belongs in this repository · কেন এটি এই রিপোজিটরিতে রাখা উচিত · 为什么应纳入本仓库 · このリポジトリに含める理由 · Почему это нужно репозиторию · Por qué debería estar aquí · Warum es hierher gehört"
+      description: How is it reusable across projects rather than tied to one codebase?
+    validations:
+      required: true
+
+  - type: input
+    id: source-url
+    attributes:
+      label: "Source URL · সোর্স URL · 来源链接 · 出典 URL · Ссылка на источник · URL de origen · Quell-URL"
+      description: Optional. Upstream repository, documentation, or specification. Paste the URL verbatim.
+
+  - type: textarea
+    id: example-usage
+    attributes:
+      label: "Example usage · ব্যবহারের উদাহরণ · 使用示例 · 使用例 · Пример использования · Ejemplo de uso · Anwendungsbeispiel"
+      description: Optional. A short runnable example. Keep commands and code unchanged.
+      render: shell
+    validations:
+      required: false
+
+  - type: input
+    id: technologies
+    attributes:
+      label: "Related technologies · সংশ্লিষ্ট প্রযুক্তি · 相关技术 · 関連技術 · Связанные технологии · Tecnologías relacionadas · Verwandte Technologien"
+      description: Optional. Runtime, language, or tool versions involved. Keep names and versions as written.
+
+  - type: textarea
+    id: context
+    attributes:
+      label: "Additional context · অতিরিক্ত তথ্য · 补充信息 · 補足情報 · Дополнительный контекст · Contexto adicional · Zusätzlicher Kontext"
+      description: Optional. Constraints, portability limits, or security considerations.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: "Confirmations · নিশ্চিতকরণ · 确认 · 確認 · Подтверждения · Confirmaciones · Bestätigungen"
+      description: Both confirmations are mandatory before submitting.
+      options:
+        - label: I searched the vault and this does not duplicate an existing resource.
+          required: true
+        - label: This resource can be shared without proprietary or confidential content.
+          required: true
