@@ -1,0 +1,25 @@
+# Dependabot configuration — keeps the pinned GitHub Actions toolchain current.
+#
+# The repository is documentation-only, so there is no package ecosystem to
+# track here. Actions are the one real dependency, and every workflow step pins
+# an exact release tag; Dependabot opens a single grouped PR when a newer tag
+# is published so pins never silently rot.
+version: 2
+
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Etc/UTC"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(ci)"
+    labels:
+      - "dependencies"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
