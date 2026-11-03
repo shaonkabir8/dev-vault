@@ -55,30 +55,39 @@
 
 ```text
 dev-vault/
-├── snippets/       # পুনর্ব্যবহারযোগ্য ছোট কোড
-├── scripts/        # Automation ও utility scripts
-├── configs/        # Configuration examples ও templates
-├── docs/           # Documentation ও troubleshooting notes
-├── patterns/       # Architecture ও engineering patterns
-├── prompts/        # AI prompts ও agent instructions
-├── commands/       # Reusable CLI commands ও workflows
-├── templates/      # Project, issue ও documentation templates
-├── README.md       # Repository guide ও working standards
-└── .gitignore      # অপ্রয়োজনীয় ও সংবেদনশীল ফাইল বাদ দেওয়া
+├── catalog/           # Machine-readable resource catalog (index.json + schema.json)
+├── resources/         # সব রিসোর্সের একক source of truth
+│   ├── skills/        # Agent Skills (SKILL.md format)
+│   ├── snippets/      # পুনর্ব্যবহারযোগ্য ছোট কোড
+│   ├── configurations/# Configuration templates (*.example)
+│   ├── templates/     # Project ও documentation scaffolds
+│   ├── prompts/       # AI prompts ও agent instructions
+│   ├── workflows/     # Multi-step processes ও runbooks
+│   └── references/    # Engineering notes ও technical references
+├── integrations/      # পাতলা agent-specific adapters (শুধু নির্দেশনা)
+├── schemas/           # Resource metadata contracts
+├── scripts/           # Lightweight validation ও maintenance utilities
+├── tests/             # Repository tooling-এর টেস্ট
+├── docs/              # Architecture, standards ও roadmap
+└── .github/           # CI, linting ও governance
 ```
 
 ### Directory Responsibilities
 
 | Directory | দায়িত্ব | উদাহরণ |
 |---|---|---|
-| `snippets/` | ছোট ও পুনর্ব্যবহারযোগ্য কোড | String helpers, validation |
-| `scripts/` | পুনরাবৃত্ত কাজ স্বয়ংক্রিয় করা | Backup, cleanup, setup |
-| `configs/` | নিরাপদ configuration templates | `.env.example`, lint config |
-| `docs/` | ব্যাখ্যা ও সমস্যা সমাধানের নোট | Setup guides, troubleshooting |
-| `patterns/` | বারবার কাজে লাগা design ও engineering patterns | Error handling, retry pattern |
-| `prompts/` | AI-কে নির্দিষ্ট কাজের নির্দেশনা | Code review, repository audit |
-| `commands/` | পুনর্ব্যবহারযোগ্য terminal workflows | Git aliases, CLI recipes |
-| `templates/` | সাধারণ কাজের প্রস্তুত কাঠামো | Issue, PR, resource templates |
+| Directory | দায়িত্ব | উদাহরণ |
+|---|---|---|
+| `resources/snippets/` | ছোট ও পুনর্ব্যবহারযোগ্য কোড | String helpers, validation |
+| `resources/skills/` | Agent Skills (`SKILL.md` format) | PDF processing, repo audit |
+| `resources/configurations/` | নিরাপদ configuration templates | `.env.example`, lint config |
+| `resources/templates/` | সাধারণ কাজের প্রস্তুত কাঠামো | Project, resource templates |
+| `resources/prompts/` | AI-কে নির্দিষ্ট কাজের নির্দেশনা | Code review, repository audit |
+| `resources/workflows/` | Multi-step processes ও runbooks | Release, cleanup workflows |
+| `resources/references/` | Engineering notes ও references | Setup guides, patterns |
+| `catalog/` | Machine-readable resource catalog | `index.json` |
+
+**Organization rule:** কোনো ফাইল রাখার আগে তার প্রকৃত দায়িত্ব অনুযায়ী সঠিক directory নির্বাচন করুন। শুধু ফাইলের extension দেখে directory নির্বাচন করবেন না। বিস্তারিত: [ARCHITECTURE.md](./ARCHITECTURE.md) ও [RESOURCE_STANDARD.md](./RESOURCE_STANDARD.md)।
 
 **Organization rule:** কোনো ফাইল রাখার আগে তার প্রকৃত দায়িত্ব অনুযায়ী সঠিক directory নির্বাচন করুন। শুধু ফাইলের extension দেখে directory নির্বাচন করবেন না।
 

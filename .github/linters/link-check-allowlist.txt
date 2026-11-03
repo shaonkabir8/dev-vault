@@ -4,10 +4,9 @@
 # Every entry is a documented gap and is reported as a ::warning in CI, so an
 # allowlisted link stays visible in the log instead of silently disappearing.
 # Remove an entry as soon as the target file exists.
+#
+# 2026-11: the LICENSE, CONTRIBUTING.md, and SECURITY.md gaps below were
+# resolved — those files now exist at the repository root — so their entries
+# were removed. The list is currently empty.
 
-# README.md advertises these repository files as part of its License,
-# Security, and Contributing sections, but they are not committed yet.
-# Tracked as outstanding work; the workflows under .github/ do not create them.
-README.md|./LICENSE
-README.md|./CONTRIBUTING.md
-README.md|./SECURITY.md
+# (empty — add entries only with a tracking justification)
