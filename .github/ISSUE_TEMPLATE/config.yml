@@ -1,18 +1,1 @@
-# Purpose: control the issue template chooser — which entry points a contributor
-# sees and where non-issue reports go.
-#
-# blank_issues_enabled stays false, as set when this directory was introduced:
-# the repository is documentation-only and the four forms cover every report
-# type, so an unstructured issue adds nothing. Maintainers with write access
-# still get the "Maintainers only" blank option. Change this only with a
-# repository-level reason, not per-issue.
 blank_issues_enabled: false
-contact_links:
-  # Route questions and design discussion away from the issue tracker.
-  - name: Documentation
-    url: https://github.com/shaonkabir8/dev-vault/blob/main/docs/README.md
-    about: Working standards, resource lifecycle, commit and branch policy.
-  # Vulnerability reports must stay private; a public issue would leak the finding.
-  - name: Security concern
-    url: https://github.com/shaonkabir8/dev-vault/security/advisories/new
-    about: Report a leaked secret or vulnerability privately instead of opening an issue.
