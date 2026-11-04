@@ -84,24 +84,23 @@ cd dev-vault
 ### Find a resource
 
 ```bash
-# Search by keyword
-grep -ri "json parse" snippets/
+# Browse the machine-readable catalog (start here — agents and humans alike)
+cat catalog/index.json
 
-# List all snippets
-ls snippets/
+# Or use the catalog helper
+python3 scripts/catalog.py list
+python3 scripts/catalog.py list --type snippets --status stable
 ```
 
 ### Use a resource
 
 ```bash
-# Copy a script into your project
-cp scripts/git-cleanup.sh /path/to/your/project/scripts/
-
-# Or reference a snippet directly
-cat snippets/safe-json-parse.js
+# 1. Open the resource directory listed in the catalog entry
+# 2. Read its RESOURCE.md (or SKILL.md for skills) fully
+# 3. Review the source, then adapt it into your project
 ```
 
-> **⚠️ Important:** Always review a resource's requirements, limitations, and security notes before using it. See the complete [Working Standards](./docs/README.md) in the documentation.
+> **⚠️ Important:** Always review a resource's requirements, limitations, and security notes before using it. Never execute a resource merely because it exists in this vault. See [AGENTS.md](./AGENTS.md) for agent instructions and the complete [Working Standards](./docs/README.md).
 
 ---
 
@@ -113,6 +112,10 @@ Complete documentation is available in the `docs/` directory:
 |---|---|---|
 | 🇬🇧 English | [docs/README.md](./docs/README.md) | Complete English documentation |
 | 🇧🇩 Bengali | [docs/README.bn.md](./docs/README.bn.md) | Complete Bengali documentation |
+| 🏗️ Architecture | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | Repository purpose, structure, and design decisions |
+| 📏 Resource Standard | [docs/RESOURCE_STANDARD.md](./docs/RESOURCE_STANDARD.md) | The contract every resource must meet |
+| 🗺️ Roadmap | [docs/ROADMAP.md](./docs/ROADMAP.md) | Deliberate, minimal evolution plan |
+| 🤖 Agent instructions | [AGENTS.md](./AGENTS.md) | How AI agents discover and reuse resources |
 
 The complete documentation covers:
 - Repository architecture and resource lifecycle
@@ -133,7 +136,7 @@ Contributions are welcome and appreciated! Whether you are reporting a bug, sugg
 
 1. **Fork** the repository
 2. **Create** a branch (`feat/`, `fix/`, `docs/`, etc.)
-3. **Implement** your change following the [Working Standards](./docs/README.md)
+3. **Implement** your change following the [Resource Standard](./docs/RESOURCE_STANDARD.md)
 4. **Test** your change thoroughly
 5. **Commit** using [Conventional Commits](https://www.conventionalcommits.org/)
 6. **Open** a Pull Request

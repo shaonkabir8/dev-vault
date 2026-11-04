@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dev Vault Resource Catalog",
+  "description": "Validation contract for catalog/index.json. The catalog describes resources; it never duplicates their implementation. The resource entry definition lives in ../schemas/resource.schema.json and is referenced from here so resource metadata has exactly one source of truth.",
+  "type": "object",
+  "required": ["$schema", "version", "resources"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Must point at this schema file."
+    },
+    "version": {
+      "const": 1,
+      "description": "Catalog format version. Bump only with a documented migration."
+    },
+    "resources": {
+      "type": "array",
+      "items": { "$ref": "../schemas/resource.schema.json#/definitions/resource" },
+      "maxItems": 1000
+    }
+  }
+}

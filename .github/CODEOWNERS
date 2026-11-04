@@ -9,15 +9,14 @@
 
 # Centralized automation and repository configuration.
 /.github/ @shaonkabir8
-/.github/workflows/ @shaonkabir8
-/.github/linters/ @shaonkabir8
 
-# Documentation and the reusable resource directories that the docs describe.
+# Foundation: architecture, catalog, schemas, tooling, agent integrations.
 /docs/ @shaonkabir8
-/snippets/ @shaonkabir8
+/catalog/ @shaonkabir8
+/schemas/ @shaonkabir8
 /scripts/ @shaonkabir8
-/configs/ @shaonkabir8
-/patterns/ @shaonkabir8
-/prompts/ @shaonkabir8
-/commands/ @shaonkabir8
-/templates/ @shaonkabir8
+/tests/ @shaonkabir8
+/integrations/ @shaonkabir8
+
+# Reusable resources — the single source of truth.
+/resources/ @shaonkabir8

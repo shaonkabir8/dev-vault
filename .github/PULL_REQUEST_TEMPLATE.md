@@ -8,14 +8,12 @@
 
 <!-- Which directories or resources does this touch? -->
 
-- [ ] `snippets/`
-- [ ] `scripts/`
-- [ ] `configs/`
+- [ ] `resources/` (skills, snippets, configurations, templates, prompts, workflows, references)
+- [ ] `catalog/` (resource catalog)
+- [ ] `schemas/` (metadata contracts)
+- [ ] `scripts/` / `tests/` (tooling)
+- [ ] `integrations/` (agent adapters)
 - [ ] `docs/`
-- [ ] `patterns/`
-- [ ] `prompts/`
-- [ ] `commands/`
-- [ ] `templates/`
 - [ ] `.github/` (automation and configuration)
 
 ## Change type
@@ -33,6 +31,8 @@
 <!-- Evidence, not claims. Paste command output or name the check you ran. -->
 
 - [ ] Relevant checks were run locally and are reproduced below
+- [ ] `python3 scripts/validate.py` passes (catalog and structure)
+- [ ] `python3 -m unittest discover -s tests` passes
 - [ ] Markdown lint passes (`Markdown Lint` workflow)
 - [ ] Internal link and anchor check passes (`Link Check` workflow)
 - [ ] Secret scan passes (`Secret Scan` workflow)
@@ -48,4 +48,5 @@
 - [ ] Unrelated changes are excluded from this PR
 - [ ] No secrets, credentials, personal data, or proprietary content
 - [ ] New resources have a documented purpose, usage, and known limitations
+- [ ] New resources have a catalog entry with a unique id and valid path
 - [ ] No duplicate implementation of an existing resource
