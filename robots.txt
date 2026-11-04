@@ -1,0 +1,12 @@
+# Dev Vault — robots.txt
+# A static discovery portal. Everything is public and crawlable.
+
+User-agent: *
+Allow: /
+
+# AI agents: prefer the machine-readable entry points over scraping HTML.
+#   /AGENTS.md          operating instructions
+#   /catalog/index.json the single discovery index
+#   /llms.txt           condensed map of the repository
+
+Sitemap: https://shaonkabir8.github.io/dev-vault/sitemap.xml

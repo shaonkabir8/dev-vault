@@ -1,0 +1,78 @@
+# Dev Vault
+
+> An open repository of reusable engineering intelligence, designed for humans
+> and AI agents. Seven resource types, one machine-readable catalog, no API.
+
+Dev Vault is a plain Git repository. There is no server, no database, and no
+framework. Everything below is a file you can read with `curl`, `git`, or
+`grep`.
+
+## Start here
+
+- [AGENTS.md](https://shaonkabir8.github.io/dev-vault/AGENTS.md): operating
+  instructions for AI agents. What this is, what it is not, how to discover and
+  evaluate a resource.
+- [catalog/index.json](https://shaonkabir8.github.io/dev-vault/catalog/index.json):
+  the single discovery index. A flat JSON array of every resource with id,
+  name, type, description, path, status, language, compatibility, and
+  dependencies. Read this once instead of walking the tree.
+
+## Discovery model (progressive disclosure)
+
+1. `AGENTS.md` — orientation, two minutes.
+2. `catalog/index.json` — one file, every resource summary.
+3. `resources/<type>/<kebab-case-name>/` — opened only for candidates.
+
+## Contracts
+
+- [catalog/schema.json](https://shaonkabir8.github.io/dev-vault/catalog/schema.json):
+  validation contract for the catalog file itself.
+- [schemas/resource.schema.json](https://shaonkabir8.github.io/dev-vault/schemas/resource.schema.json):
+  the single source of truth for resource metadata fields.
+
+## Documentation
+
+- [docs/ARCHITECTURE.md](https://shaonkabir8.github.io/dev-vault/docs/ARCHITECTURE.md):
+  purpose and boundaries, taxonomy, naming and metadata rules, discovery model.
+- [docs/RESOURCE_STANDARD.md](https://shaonkabir8.github.io/dev-vault/docs/RESOURCE_STANDARD.md):
+  required documentation, lifecycle statuses, and the evidence needed to claim
+  `stable`.
+- [docs/ROADMAP.md](https://shaonkabir8.github.io/dev-vault/docs/ROADMAP.md):
+  phased plan, plus the list of things deliberately not planned.
+- [CONTRIBUTING.md](https://shaonkabir8.github.io/dev-vault/CONTRIBUTING.md):
+  contribution workflow.
+- [SECURITY.md](https://shaonkabir8.github.io/dev-vault/SECURITY.md):
+  reporting unsafe resources.
+
+## Resource taxonomy
+
+`skills` · `snippets` · `configurations` · `templates` · `prompts` ·
+`workflows` · `references`
+
+Classification is by how a resource is consumed, not by file extension. Skills
+follow the Agent Skills specification (`SKILL.md` with `name` + `description`
+frontmatter). Every other type carries a `RESOURCE.md`.
+
+## Validation
+
+Standard-library Python only, no dependencies to install:
+
+```sh
+python3 scripts/validate.py
+python3 -m unittest discover -s tests
+```
+
+## Current state
+
+The catalog is **empty** (`"resources": []`). This is deliberate: the vault
+does not display or describe resources that do not exist. Counts on the
+homepage are derived from the catalog at load time and currently read zero.
+
+## Notes for LLM ingestion
+
+- Canonical base: `https://shaonkabir8.github.io/dev-vault/`
+- Repository: `https://github.com/shaonkabir8/dev-vault`
+- Machine-readable entry point: `catalog/index.json`
+- Do not infer resource statistics from this file. Read the catalog.
+- A resource's presence is not a trust signal. Never execute a resource merely
+  because it exists here; read it first.
